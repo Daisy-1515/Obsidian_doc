@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Flash Attention 2 阅读.md",
+                "file": "Flash Communication.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Flash Attention 2 阅读"
+              "title": "Flash Communication"
             }
           }
         ]
@@ -97,7 +97,7 @@
       {
         "id": "f6408d1a4ea3a971",
         "type": "tabs",
-        "dimension": 71.13997113997114,
+        "dimension": 64.1826923076923,
         "children": [
           {
             "id": "d35e854fad1a3465",
@@ -153,13 +153,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Flash Attention 2 阅读.md",
+                "file": "Flash Communication.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Flash Attention 2 阅读 的大纲"
+              "title": "Flash Communication 的大纲"
             }
           }
         ],
@@ -168,7 +168,7 @@
       {
         "id": "692cef651039c873",
         "type": "tabs",
-        "dimension": 28.860028860028862,
+        "dimension": 35.81730769230769,
         "children": [
           {
             "id": "cae629f3b527e7d0",
@@ -184,7 +184,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 366.5
+    "width": 256.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -202,22 +202,28 @@
   },
   "active": "cee0cf9c67cf8123",
   "lastOpenFiles": [
-    "Snipaste_2025-10-25_17-01-24.png",
+    "Rabe算法和Staas算法.md",
     "Flash Attention 阅读.md",
-    "Flash Attention 2 阅读.md",
+    "未命名.md",
+    "Flash Communication.md",
+    "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
+    "assert/Pasted image 20251027144345.png",
+    "assert/Snipaste_2025-10-22_20-48-19.png",
+    "assert/Snipaste_2025-10-21_21-11-36.png",
     "end2end名词解释.md",
-    "BERT-large.md",
+    "assert/Pasted image 20251021205636.png",
+    "assert/Snipaste_2025-10-25_17-01-24.png",
+    "Pasted image 20251027144347.png",
+    "Pasted image 20251027144349.png",
     "注意力机制中QKV反向传播公式推导.md",
+    "FlashAttention-3 阅读.md",
+    "Flash Attention 2 阅读.md",
+    "BERT-large.md",
     "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
     "操作融合（Operation Fusion).md",
     "tiling, recomputation 分块技术 重新计算.md",
-    "Rabe算法和Staas算法.md",
-    "FlashAttention-3 阅读.md",
     "assert/算法分析FlashAttention算法实例演示_flash attention实例-CSDN博客.mp4",
     "未命名.base",
-    "assert",
-    "assert/Snipaste_2025-10-22_20-48-19.png",
-    "assert/Snipaste_2025-10-21_21-11-36.png",
-    "assert/Pasted image 20251021205636.png"
+    "assert"
   ]
 }

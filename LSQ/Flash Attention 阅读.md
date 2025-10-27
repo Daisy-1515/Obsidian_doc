@@ -1,4 +1,5 @@
-
+# Flash Attention 阅读
+## 图片分析
 ![[Pasted image 20251021205636.png]]
 这个图描述的是 FlashAttention 算法与传统计算框架（例如 PyTorch）在计算效率上的对比，以及它如何通过优化内存访问来提升计算性能。我们可以从以下几个方面分析图的内容：
 ### 1. **内存层次结构（Memory Hierarchy）**
@@ -201,7 +202,7 @@ Require: Matrices Q, K, V ∈ R^N×d in HBM, on-chip SRAM of size M.
 
 
 
-# ==论文如何做softmax分块的：==  
+## ==论文如何做softmax分块的：==  
 
 ![[Snipaste_2025-10-22_20-48-19.png]]
 
@@ -383,7 +384,7 @@ $$
 
 
 
-# 算法伪代码
+## 算法伪代码
 ```
 
 
@@ -660,20 +661,20 @@ $$
 * 将 $O_1$ 更新为 $O_1 = \text{diag}(l_{\text{new}}^1) \cdot O_1 - \text{diag}(l_1) \cdot \exp(m_{\text{new}}^1) \cdot O_1 + \exp(m̃_{11} - m_{\text{new}}^1) \cdot P_{11} \cdot V_1$。
 
 
-#### ① $\text{diag}(l_{\text{new}}^i) \cdot O_i$  
+ ① $\text{diag}(l_{\text{new}}^i) \cdot O_i$  
 
 > 把之前的输出 $O_i$ 乘上新的归一化比例 $l_{\text{new}}^i$。  ==初始化为1==
 
 表示我们正在对之前的结果进行重新缩放，以适配更新后的 softmax 分母。
 
-#### ② $- \text{diag}(l_i) \cdot e^{m_{\text{new}}^i} \cdot O_i$
+② $- \text{diag}(l_i) \cdot e^{m_{\text{new}}^i} \cdot O_i$
 
 > 从旧的加权输出中减去多余的部分（由旧的缩放比例 $l_i$、旧的最大值 $m_i$ 决定）。
 
 这一步实现了**数值稳定的 softmax 递推**，避免了指数溢出。
 
 通过比较新旧最大值 $m_{\text{new}}^i$ 和 $m_i$，将先前的结果重新对齐到新的指数基准。
-#### ③ $+ e^{\tilde{m}_{ij} - m_{\text{new}}^i} \cdot \tilde{P}_{ij} \cdot V_j$
+ ③ $+ e^{\tilde{m}_{ij} - m_{\text{new}}^i} \cdot \tilde{P}_{ij} \cdot V_j$
 
 > 加上当前块 $j$ 的注意力贡献。
 
@@ -734,7 +735,7 @@ https://blog.csdn.net/HaoBBNuanMM/article/details/135415355
 https://github.com/Dao-AILab/flash-attention
 
 ---
-# 1. **Tiling（分块技术）**
+## 1. **Tiling（分块技术）**
 
 **Tiling**（分块技术）是一种在计算中通过将大矩阵或张量划分为较小的“块”来优化计算性能的技术。通过将数据分成更小的部分，可以更好地利用计算资源，减少内存访问瓶颈，并提高缓存的使用效率。
 #### 如何工作：
@@ -769,7 +770,7 @@ $$
 
 
 
-# 2. **Recomputation（重新计算）**
+## 2. **Recomputation（重新计算）**
 
 **Recomputation**（重新计算）是一种通过在需要时重新计算某些中间结果，而不是存储它们来节省内存的技术。特别是在深度学习中，模型的训练通常会涉及大量的中间结果和临时存储。通过重新计算一些中间结果而不是缓存它们，可以有效减少内存消耗，尤其是在内存受限的环境下。
 #### 如何工作：
@@ -806,3 +807,80 @@ $$
 
 这两种技术在深度学习和其他大规模计算中都非常重要，尤其是在处理内存限制或计算资源有限的情况下。
 
+However, FlashAttention is still not nearly as fast as optimized matrix-multiply (GEMM) operations, reaching only 25-40% of the theoretical maximum FLOPs/s. We observe that the inefficiency is due to suboptimal work partitioning between different thread blocks and warps on the GPU, causing either low-occupancy or unnecessary shared memory reads/writes
+然而，FlashAttention 的速度仍远不及优化矩阵乘法（GEMM）运算，仅达到理论最大 FLOPs/s 的 25-40%。我们发现，效率低下的原因是 GPU 上不同线程块和翘曲之间的工作分割不够理想，导致低占用率或不必要的共享内存读/写。为了解决这些问题，我们提出了具有更好工作分区的 FlashAttention-2。
+In particular, we (1) tweak the algorithm to reduce the number of non-matmul FLOPs (2) parallelize the attention computation, even for a single head, across different thread blocks to increase occupancy, and (3) within each thread block, distribute the work between warps to reduce communication through shared memory.
+具体来说，我们
+（1）调整算法以减少非 Matmul FLOPs 的数量（==主要是softmax==）
+（2）在不同线程块之间并行处理注意力计算（即使是单头计算），以提高占用率，以及
+（3）在每个线程块内，在 warps 之间分配工作，以减少通过共享内存的通信。
+
+# FlashAttention-2
+##  算法 1 FlashAttention-2 前向传递
+### 中文版本（带缩进）
+
+1. 将 $Q$ 分成 $T_r = \left\lceil \frac{N}{B_r} \right\rceil$ 个块 $Q_1, Q_2, \dots, Q_{T_r}$，每个块的大小为 $B_r \times d$，并将 $K$ 和 $V$ 分成 $T_c = \left\lceil \frac{N}{B_c} \right\rceil$ 个块 $K_1, K_2, \dots, K_{T_c}$ 和 $V_1, V_2, \dots, V_{T_c}$，每个块的大小为 $B_c \times d$。
+2. 将输出 $O \in \mathbb{R}^{N \times d}$ 分成 $T_r$ 个块 $O_1, O_2, \dots, O_{T_r}$，每个块的大小为 $B_r \times d$，并将 logsumexp $L$ 分成 $T_r$ 个块 $L_1, L_2, \dots, L_{T_r}$，每个块的大小为 $B_r$。
+3. 对于 $1 \leq i \leq T_r$，执行以下操作：
+* 加载 $Q_i$ 从 HBM 到片上 SRAM。
+* 在片上初始化 $O^{(0)}_i = (0)_{B_r \times d} \in \mathbb{R}^{B_r \times d}$，$l^{(0)}_i = (0)_{B_r} \in \mathbb{R}^{B_r}$，$m^{(0)}_i = (-\infty)_{B_r} \in \mathbb{R}^{B_r}$。
+* 对于 $1 \leq j \leq T_c$，执行以下操作：
+* ==加载 $K_j, V_j$ 从 HBM 到片上 SRAM==。
+* 在片上计算 $S^{(j)}_i = Q_i K_j^T \in \mathbb{R}^{B_r \times B_c}$。
+* 在片上计算 $m^{(j)}_i = \max(m^{(j-1)}_i, \text{rowmax}(S^{(j)}_i)) \in \mathbb{R}^{B_r}$，$P^{(j)}_i = \exp(S^{(j)}_i - m^{(j)}_i) \in \mathbb{R}^{B_r \times B_c}$（按元素计算），$l^{(j)}_i = \exp(m^{(j-1)}_i - m^{(j)}_i) l^{(j-1)}_i + \text{rowsum}(P^{(j)}_i) \in \mathbb{R}^{B_r}$。
+* 在片上计算 $O^{(j)}_i = \text{diag}(\exp(m^{(j-1)}_i - m^{(j)}_i))^{-1} O^{(j-1)}_i + P^{(j)}_i V_j$。
+* 结束循环。
+1. 在片上计算 $O_i = \text{diag}(l^{(T_c)}_i)^{-1} O^{(T_c)}_i$。
+2. 在片上计算 $L_i = m^{(T_c)}_i + \log(l^{(T_c)}_i)$。
+3. 将 $O_i$ 写入 HBM 作为第 $i$ 个块的输出 $O$。
+4. 将 $L_i$ 写入 HBM 作为第 $i$ 个块的 logsumexp $L$。
+5. 结束循环。
+6. 返回输出 $O$ 和 logsumexp $L$。
+
+
+**与1的区别：**
+1. load顺序有区别，以前是一列一列计算，现在是一行一行算S。
+原本:
+![[Snipaste_2025-10-25_17-01-24.png]]
+现版:
+对于 $1 \leq i \leq T_r$，执行以下操作：
+* 加载 $Q_i$ 从 HBM 到片上 SRAM。
+* 在片上初始化 $O^{(0)}_i = (0)_{B_r \times d} \in \mathbb{R}^{B_r \times d}$，$l^{(0)}_i = (0)_{B_r} \in \mathbb{R}^{B_r}$，$m^{(0)}_i = (-\infty)_{B_r} \in \mathbb{R}^{B_r}$。
+* 对于 $1 \leq j \leq T_c$，执行以下操作：
+* ==加载 $K_j, V_j$ 从 HBM 到片上 SRAM==。
+
+### English Version (Indented)
+
+1. Divide $Q$ into $T_r = \left\lceil \frac{N}{B_r} \right\rceil$ blocks $Q_1, Q_2, \dots, Q_{T_r}$, each of size $B_r \times d$, and divide $K$ and $V$ into $T_c = \left\lceil \frac{N}{B_c} \right\rceil$ blocks $K_1, K_2, \dots, K_{T_c}$ and $V_1, V_2, \dots, V_{T_c}$, each of size $B_c \times d$.
+2. Divide the output $O \in \mathbb{R}^{N \times d}$ into $T_r$ blocks $O_1, O_2, \dots, O_{T_r}$, each of size $B_r \times d$, and divide the logsumexp $L$ into $T_r$ blocks $L_1, L_2, \dots, L_{T_r}$, each of size $B_r$.
+3. For $1 \leq i \leq T_r$, do the following:
+* Load $Q_i$ from HBM to on-chip SRAM.
+* On-chip, initialize $O^{(0)}_i = (0)_{B_r \times d} \in \mathbb{R}^{B_r \times d}$, $l^{(0)}_i = (0)_{B_r} \in \mathbb{R}^{B_r}$, $m^{(0)}_i = (-\infty)_{B_r} \in \mathbb{R}^{B_r}$.
+* For $1 \leq j \leq T_c$, do the following:
+* Load $K_j, V_j$ from HBM to on-chip SRAM.
+* On-chip, compute $S^{(j)}_i = Q_i K_j^T \in \mathbb{R}^{B_r \times B_c}$.
+* On-chip, compute $m^{(j)}_i = \max(m^{(j-1)}_i, \text{rowmax}(S^{(j)}_i)) \in \mathbb{R}^{B_r}$, $P^{(j)}_i = \exp(S^{(j)}_i - m^{(j)}_i) \in \mathbb{R}^{B_r \times B_c}$ (pointwise), $l^{(j)}_i = \exp(m^{(j-1)}_i - m^{(j)}_i) l^{(j-1)}_i + \text{rowsum}(P^{(j)}_i) \in \mathbb{R}^{B_r}$.
+* On-chip, compute $O^{(j)}_i = \text{diag}(\exp(m^{(j-1)}_i - m^{(j)}_i))^{-1} O^{(j-1)}_i + P^{(j)}_i V_j$.
+* End of loop.
+1. On-chip, compute $O_i = \text{diag}(l^{(T_c)}_i)^{-1} O^{(T_c)}_i$.
+2. On-chip, compute $L_i = m^{(T_c)}_i + \log(l^{(T_c)}_i)$.
+3. Write $O_i$ to HBM as the $i$-th block of output $O$.
+4. Write $L_i$ to HBM as the $i$-th block of logsumexp $L$.
+5. End of loop.
+6. Return the output $O$ and logsumexp $L$.
+## 与Flash Attention-1的区别
+1. 在前向传播算法中，**1**把Q,V放在了**内循环**中，计算顺序是计算出所有向量的一部分，即按列从上往下运行；但是在**2**中，是把K，V放在了内循环中，计算顺序是，先计算一部分向量的全部，即从左右往右运算
+	**为什么这么做**：
+	* 2优化了softmax操作，不想要额外m和l了，就一次性把向量算完了在去算其他的向量，就可以在一次内循环中找到最大值，而不是像1一样要在外循环最后一次才找到所有向量的最大值。相比较下，原本需要O(N)的存储空间就只需要O(N/分块次数)的存储空间来存softmax的缩放系数了。
+	* 
+   
+2. 
+## 对Flash Attention评价
+在实际的GPU情况过于理想，Flash Attention 2继续优化。
+
+[[end2end名词解释]]
+
+
+# Flash Attention-3
+
+https://tridao.me/blog/2024/flash3/
