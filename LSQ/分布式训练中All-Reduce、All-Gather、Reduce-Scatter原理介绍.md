@@ -2,6 +2,7 @@
 *  [集合通信算子](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/hccl/hcclug/hcclug_000004.html ) 介绍了常见通信算子
 * [AllReduce算法的前世今生](https://zhuanlan.zhihu.com/p/79030485)
 * [分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍](https://zhuanlan.zhihu.com/p/17201336684  )
+* [PyTorch DDP 与 Ring-AllReduce](https://cloud.tencent.com/developer/article/2306663 )
 ![[Pasted image 20251027155313.png]]
 ![[Pasted image 20251027155453.png]]
 ![[Pasted image 20251027155322.png]]
