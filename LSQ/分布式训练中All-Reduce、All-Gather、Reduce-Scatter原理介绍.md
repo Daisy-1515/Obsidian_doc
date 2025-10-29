@@ -3,6 +3,7 @@
 * [AllReduce算法的前世今生](https://zhuanlan.zhihu.com/p/79030485)
 * [分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍](https://zhuanlan.zhihu.com/p/17201336684  )
 * [PyTorch DDP 与 Ring-AllReduce](https://cloud.tencent.com/developer/article/2306663 )
+* https://www.51cto.com/aigc/3300.html
 ![[Pasted image 20251027155313.png]]
 ![[Pasted image 20251027155453.png]]
 ![[Pasted image 20251027155322.png]]

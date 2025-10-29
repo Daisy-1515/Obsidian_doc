@@ -868,6 +868,29 @@ In particular, we (1) tweak the algorithm to reduce the number of non-matmul FLO
 4. Write $L_i$ to HBM as the $i$-th block of logsumexp $L$.
 5. End of loop.
 6. Return the output $O$ and logsumexp $L$.
+
+
+## [[CUDA中的atomic原子操作]]
+## warps中 split K方案 
+在warp中，头为1，单头注意力中矩阵乘法，如下图所示，在版本1中，最后O的输出就需要线程最后加上去
+$$ 
+O_1 = 
+  \vec{S_1^{(1)}} \cdot \vec{V^{(1)}} 
++ \vec{S_1^{(2)}} \cdot \vec{V^{(2)}} 
++ \vec{S_1^{(3)}} \cdot \vec{V^{(3)}}
++ \vec{S_1^{(4)}} \cdot \vec{V^{(4)}}
+$$
+上标表示哪个warp 下标表示第几行
+$$ 
+O_2 = 
+  \vec{S_2^{(1)}} \cdot \vec{V^{(1)}} 
++ \vec{S_2^{(2)}} \cdot \vec{V^{(2)}} 
++ \vec{S_2^{(3)}} \cdot \vec{V^{(3)}}
++ \vec{S_2^{(4)}} \cdot \vec{V^{(4)}}
+$$
+![[Snipaste_2025-10-29_13-47-37.png]]
+![[Pasted image 20251029131824.png]]
+![[Pasted image 20251029131828.png]]
 ## 与Flash Attention-1的区别
 1. 在前向传播算法中，**1**把Q,V放在了**内循环**中，计算顺序是计算出所有向量的一部分，即按列从上往下运行；但是在**2**中，是把K，V放在了内循环中，计算顺序是，先计算一部分向量的全部，即从左右往右运算
 	**为什么这么做**：

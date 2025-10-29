@@ -35,9 +35,33 @@
             "id": "8348916c604149b3",
             "type": "leaf",
             "state": {
+              "type": "image",
+              "state": {
+                "file": "assert/Pasted image 20251029131824.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20251029131824"
+            }
+          },
+          {
+            "id": "1ebf227ac0141172",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "assert/Pasted image 20251029131828.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20251029131828"
+            }
+          },
+          {
+            "id": "b89d2dbdcac512cb",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Flash Communication.md",
+                "file": "Flash Attention 阅读.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -52,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Flash Communication"
+              "title": "Flash Attention 阅读"
             }
           },
           {
@@ -80,7 +104,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -146,7 +170,7 @@
       {
         "id": "f6408d1a4ea3a971",
         "type": "tabs",
-        "dimension": 64.1826923076923,
+        "dimension": 62.59057971014492,
         "children": [
           {
             "id": "d35e854fad1a3465",
@@ -202,13 +226,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Flash Communication.md",
+                "file": "Flash Attention 阅读.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Flash Communication 的大纲"
+              "title": "Flash Attention 阅读 的大纲"
             }
           }
         ],
@@ -217,7 +241,7 @@
       {
         "id": "692cef651039c873",
         "type": "tabs",
-        "dimension": 35.81730769230769,
+        "dimension": 37.40942028985507,
         "children": [
           {
             "id": "cae629f3b527e7d0",
@@ -233,7 +257,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 256.5
+    "width": 445.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -249,28 +273,31 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "c18d90bae65d3c0b",
+  "active": "b89d2dbdcac512cb",
   "lastOpenFiles": [
-    "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
     "Flash Communication.md",
+    "Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑.md",
+    "LaTex常见数学公式.md",
     "Rabe算法和Staas算法.md",
+    "CUDA中的atomic原子操作.md",
+    "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
+    "Flash Attention 阅读.md",
+    "assert/Snipaste_2025-10-29_13-47-37.png",
+    "assert/Pasted image 20251029131828.png",
+    "assert/Pasted image 20251029131824.png",
+    "split k 方案.md",
+    "end2end名词解释.md",
+    "BERT-large.md",
+    "注意力机制中QKV反向传播公式推导.md",
+    "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
+    "操作融合（Operation Fusion).md",
     "assert/Snipaste_2025-10-28_10-21-55.png",
     "assert/Snipaste_2025-10-28_10-19-32.png",
     "assert/Pasted image 20251027175102.png",
-    "Flash Attention 阅读.md",
-    "end2end名词解释.md",
-    "BERT-large.md",
     "assert/Snipaste_2025-10-27_17-45-13.png",
     "assert/Snipaste_2025-10-27_17-46-48.png",
     "assert/Snipaste_2025-10-22_20-48-19.png",
     "assert/Snipaste_2025-10-25_17-01-24.png",
-    "assert/Pasted image 20251027174627.png",
-    "assert/Pasted image 20251027155453.png",
-    "assert/Pasted image 20251027155322.png",
-    "注意力机制中QKV反向传播公式推导.md",
-    "操作融合（Operation Fusion).md",
-    "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
-    "未命名.md",
     "FlashAttention-3 阅读.md",
     "Flash Attention 2 阅读.md",
     "tiling, recomputation 分块技术 重新计算.md",
