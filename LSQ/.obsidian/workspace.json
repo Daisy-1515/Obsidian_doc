@@ -61,7 +61,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Flash Attention 阅读.md",
+                "file": "Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -76,7 +76,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Flash Attention 阅读"
+              "title": "Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑"
             }
           },
           {
@@ -226,13 +226,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Flash Attention 阅读.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Flash Attention 阅读 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -273,24 +272,25 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "b89d2dbdcac512cb",
+  "active": "cae629f3b527e7d0",
   "lastOpenFiles": [
-    "Flash Communication.md",
     "Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑.md",
-    "LaTex常见数学公式.md",
-    "Rabe算法和Staas算法.md",
     "CUDA中的atomic原子操作.md",
+    "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
     "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
+    "操作融合（Operation Fusion).md",
+    "注意力机制中QKV反向传播公式推导.md",
+    "end2end名词解释.md",
+    "Flash Communication.md",
+    "LaTex常见数学公式.md",
     "Flash Attention 阅读.md",
+    "未命名.md",
+    "BERT-large.md",
+    "Rabe算法和Staas算法.md",
     "assert/Snipaste_2025-10-29_13-47-37.png",
     "assert/Pasted image 20251029131828.png",
     "assert/Pasted image 20251029131824.png",
     "split k 方案.md",
-    "end2end名词解释.md",
-    "BERT-large.md",
-    "注意力机制中QKV反向传播公式推导.md",
-    "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
-    "操作融合（Operation Fusion).md",
     "assert/Snipaste_2025-10-28_10-21-55.png",
     "assert/Snipaste_2025-10-28_10-19-32.png",
     "assert/Pasted image 20251027175102.png",
