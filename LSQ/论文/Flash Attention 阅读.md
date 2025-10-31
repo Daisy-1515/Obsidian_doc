@@ -206,7 +206,7 @@ Require: Matrices Q, K, V ∈ R^N×d in HBM, on-chip SRAM of size M.
 
 ![[Snipaste_2025-10-22_20-48-19.png]]
 
-c ## Softmax 分块计算（Tiling Softmax）公式解析
+### Softmax 分块计算（Tiling Softmax）公式解析
 
 这个公式的意义在于说明：
 先寻找==局部最大值==softmax，再在局部最大值中寻找最大值来完成最终的softmax。
@@ -907,3 +907,6 @@ $$
 # Flash Attention-3
 
 https://tridao.me/blog/2024/flash3/
+
+## Related work
+[[Attention Is All You Need]]

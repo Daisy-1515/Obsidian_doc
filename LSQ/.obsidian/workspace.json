@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "4cc5b3db76206a7f",
+        "id": "9e4a619d9d5f328f",
         "type": "tabs",
         "children": [
           {
-            "id": "cee0cf9c67cf8123",
+            "id": "60c64efbe550ce57",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Flash Communication.md",
+                "file": "操作融合（Operation Fusion).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,83 +28,10 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "Flash Communication"
-            }
-          },
-          {
-            "id": "8348916c604149b3",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "assert/Pasted image 20251029131824.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251029131824"
-            }
-          },
-          {
-            "id": "1ebf227ac0141172",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "assert/Pasted image 20251029131828.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251029131828"
-            }
-          },
-          {
-            "id": "b89d2dbdcac512cb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑"
-            }
-          },
-          {
-            "id": "12a42c7072a900cc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
-              "icon": "lucide-file",
-              "title": "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍"
+              "title": "操作融合（Operation Fusion)"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -170,7 +97,7 @@
       {
         "id": "f6408d1a4ea3a971",
         "type": "tabs",
-        "dimension": 62.59057971014492,
+        "dimension": 19.293478260869566,
         "children": [
           {
             "id": "d35e854fad1a3465",
@@ -178,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Flash Attention 阅读.md",
+                "file": "Megatron-LM：Training Multi-Billion Parameter Language Models Using Model Parallelism Megatron-LM：利用模型并行性训练千亿参数语言模型.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -188,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Flash Attention 阅读 的反向链接列表"
+              "title": "Megatron-LM：Training Multi-Billion Parameter Language Models Using Model Parallelism Megatron-LM：利用模型并行性训练千亿参数语言模型 的反向链接列表"
             }
           },
           {
@@ -197,12 +124,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Flash Attention 阅读.md",
+                "file": "Megatron-LM：Training Multi-Billion Parameter Language Models Using Model Parallelism Megatron-LM：利用模型并行性训练千亿参数语言模型.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Flash Attention 阅读 的出链列表"
+              "title": "Megatron-LM：Training Multi-Billion Parameter Language Models Using Model Parallelism Megatron-LM：利用模型并行性训练千亿参数语言模型 的出链列表"
             }
           },
           {
@@ -226,12 +153,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "操作融合（Operation Fusion).md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "操作融合（Operation Fusion) 的大纲"
             }
           }
         ],
@@ -240,7 +168,7 @@
       {
         "id": "692cef651039c873",
         "type": "tabs",
-        "dimension": 37.40942028985507,
+        "dimension": 80.70652173913044,
         "children": [
           {
             "id": "cae629f3b527e7d0",
@@ -256,7 +184,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 445.5
+    "width": 540.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -272,35 +200,45 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "cae629f3b527e7d0",
+  "active": "60c64efbe550ce57",
   "lastOpenFiles": [
-    "Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑.md",
-    "CUDA中的atomic原子操作.md",
-    "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
-    "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
-    "操作融合（Operation Fusion).md",
-    "注意力机制中QKV反向传播公式推导.md",
-    "end2end名词解释.md",
-    "Flash Communication.md",
-    "LaTex常见数学公式.md",
-    "Flash Attention 阅读.md",
-    "未命名.md",
     "BERT-large.md",
+    "论文/Megatron-LM：Training Multi-Billion Parameter Language Models Using Model Parallelism Megatron-LM：利用模型并行性训练千亿参数语言模型.md",
+    "论文/Tensor-Parallelism with Partially Synchronized Activations部分同步激活的张量并行性.md",
+    "assert/Pasted image 20251031181049.png",
+    "论文/GPipe：Easy Scaling with Micro-Batch Pipeline Parallelism.md",
+    "论文/Flash Communication.md",
+    "论文/Flash Attention 阅读.md",
+    "论文/Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM.md",
+    "论文/Efficient Direct-Connect Topologies for Collective Communications用于集体通信的高效直接连接拓扑.md",
+    "论文/Attention Is All You Need.md",
+    "assert/Pasted image 20251031181023.png",
+    "assert/Pasted image 20251031181014.png",
+    "注意力机制中QKV反向传播公式推导.md",
+    "知识点/CUDA中的atomic原子操作.md",
+    "知识点",
+    "论文",
     "Rabe算法和Staas算法.md",
-    "assert/Snipaste_2025-10-29_13-47-37.png",
+    "混合精度训练和动态损失缩放.md",
+    "图论碎片知识点.md",
+    "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
+    "项目结构伪代码模板.md",
+    "end2end名词解释.md",
+    "Megatron-LM：Training Multi-Billion Parameter Language Models Using  Model Parallelism利用模型并行性训练千亿参数语言模型.md",
+    "CUDA-Python.md",
+    "Snipaste_2025-10-30_21-35-38.png",
+    "数据并行和模型并行的区别.md",
+    "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
+    "assert/Snipaste_2025-10-30_14-24-43.png",
+    "操作融合（Operation Fusion).md",
+    "202510301420.md",
+    "LaTex常见数学公式.md",
     "assert/Pasted image 20251029131828.png",
+    "assert/Snipaste_2025-10-29_13-47-37.png",
     "assert/Pasted image 20251029131824.png",
     "split k 方案.md",
     "assert/Snipaste_2025-10-28_10-21-55.png",
     "assert/Snipaste_2025-10-28_10-19-32.png",
-    "assert/Pasted image 20251027175102.png",
-    "assert/Snipaste_2025-10-27_17-45-13.png",
-    "assert/Snipaste_2025-10-27_17-46-48.png",
-    "assert/Snipaste_2025-10-22_20-48-19.png",
-    "assert/Snipaste_2025-10-25_17-01-24.png",
-    "FlashAttention-3 阅读.md",
-    "Flash Attention 2 阅读.md",
-    "tiling, recomputation 分块技术 重新计算.md",
     "assert/算法分析FlashAttention算法实例演示_flash attention实例-CSDN博客.mp4",
     "未命名.base",
     "assert"

@@ -128,3 +128,4 @@ Output:
 # related work
 * [[分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍]]
 * [[Flash Attention 阅读]]
+* [[Attention Is All You Need]]
