@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "操作融合（Operation Fusion).md",
+                "file": "知识点/操作融合（Operation Fusion).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -153,13 +153,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "操作融合（Operation Fusion).md",
+                "file": "混合精度训练和动态损失缩放.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "操作融合（Operation Fusion) 的大纲"
+              "title": "混合精度训练和动态损失缩放 的大纲"
             }
           }
         ],
@@ -200,8 +200,19 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "60c64efbe550ce57",
+  "active": "c18d90bae65d3c0b",
   "lastOpenFiles": [
+    "知识点/Rabe算法和Staas算法.md",
+    "知识点/LaTex常见数学公式.md",
+    "知识点/end2end名词解释.md",
+    "知识点/注意力机制中QKV反向传播公式推导.md",
+    "知识点/项目结构伪代码模板.md",
+    "知识点/图论碎片知识点.md",
+    "知识点/深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
+    "知识点/混合精度训练和动态损失缩放.md",
+    "Rabe算法和Staas算法.md",
+    "LaTex常见数学公式.md",
+    "知识点/操作融合（Operation Fusion).md",
     "BERT-large.md",
     "论文/Megatron-LM：Training Multi-Billion Parameter Language Models Using Model Parallelism Megatron-LM：利用模型并行性训练千亿参数语言模型.md",
     "论文/Tensor-Parallelism with Partially Synchronized Activations部分同步激活的张量并行性.md",
@@ -218,25 +229,15 @@
     "知识点/CUDA中的atomic原子操作.md",
     "知识点",
     "论文",
-    "Rabe算法和Staas算法.md",
     "混合精度训练和动态损失缩放.md",
     "图论碎片知识点.md",
     "深度学习中的常见操作：Elementwise 与 Reduction 操作解析.md",
     "项目结构伪代码模板.md",
-    "end2end名词解释.md",
-    "Megatron-LM：Training Multi-Billion Parameter Language Models Using  Model Parallelism利用模型并行性训练千亿参数语言模型.md",
-    "CUDA-Python.md",
     "Snipaste_2025-10-30_21-35-38.png",
-    "数据并行和模型并行的区别.md",
-    "分布式训练中All-Reduce、All-Gather、Reduce-Scatter原理介绍.md",
     "assert/Snipaste_2025-10-30_14-24-43.png",
-    "操作融合（Operation Fusion).md",
-    "202510301420.md",
-    "LaTex常见数学公式.md",
     "assert/Pasted image 20251029131828.png",
     "assert/Snipaste_2025-10-29_13-47-37.png",
     "assert/Pasted image 20251029131824.png",
-    "split k 方案.md",
     "assert/Snipaste_2025-10-28_10-21-55.png",
     "assert/Snipaste_2025-10-28_10-19-32.png",
     "assert/算法分析FlashAttention算法实例演示_flash attention实例-CSDN博客.mp4",
